@@ -1,0 +1,95 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:shopify.dev)",
+      "WebFetch(domain:help.shopify.com)",
+      "WebFetch(domain:apps.shopify.com)",
+      "Bash(curl -sS https://shopify.dev/*)",
+      "Bash(python3 .claude/skills/project-upgrade/scripts/upgrade.py apply *)",
+      "Bash(python3 /*/.claude/skills/project-upgrade/scripts/upgrade.py apply *)",
+      "Bash(python3 .claude/scripts/project-readme.py .)",
+      "Bash(python3 /*/.claude/scripts/project-readme.py .)"
+    ],
+    "deny": [
+      "Bash(security find-generic-password*)",
+      "Bash(security find-internet-password*)",
+      "Bash(security dump-keychain*)",
+      "Bash(env)",
+      "Bash(printenv*)",
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Read(~/.ssh/**)",
+      "Read(~/.netrc)",
+      "Read(~/.git-credentials)",
+      "Bash(git credential*)",
+      "Read(~/.config/gh/**)",
+      "Bash(gh auth token*)",
+      "Bash(gh auth status --show-token*)",
+      "Bash(gh auth status -t*)",
+      "Read(~/.config/gcloud/**)",
+      "Bash(gcloud auth print-access-token*)",
+      "Bash(gcloud auth print-identity-token*)",
+      "Read(~/.config/shopify-cli-kit-nodejs/**)",
+      "Read(~/Library/Preferences/shopify-cli-kit-nodejs/**)",
+      "Read(~/.npmrc)",
+      "Read(~/.claude/.credentials.json)",
+      "mcp__*__list-customers",
+      "mcp__*__list-orders",
+      "mcp__*__get-order",
+      "mcp__*__run-analytics-query"
+    ],
+    "ask": [
+      "mcp__*__add_comment",
+      "mcp__*__create_project_status_update",
+      "mcp__*__delete_task",
+      "mcp__*__addCommentToJiraIssue",
+      "mcp__*__addOrEditJiraIssueComment",
+      "mcp__*__executeDestructive",
+      "mcp__*__add_issue_comment",
+      "mcp__*__add_reply_to_pull_request_comment",
+      "mcp__*__editJiraIssue",
+      "mcp__*__transitionJiraIssue",
+      "mcp__*__update_tasks",
+      "mcp__*__slack_send_message",
+      "mcp__*__slack_schedule_message",
+      "mcp__*__slack_create_canvas",
+      "mcp__*__slack_update_canvas",
+      "mcp__*__add-to-collection",
+      "mcp__*__attach-digital-file",
+      "mcp__*__attach-digital-product-media",
+      "mcp__*__bulk-update-product-status",
+      "mcp__*__create-collection",
+      "mcp__*__create-digital-product",
+      "mcp__*__create-digital-product-from-link",
+      "mcp__*__create-discount",
+      "mcp__*__create-product",
+      "mcp__*__finalize-digital-file-attachment",
+      "mcp__*__finalize-digital-product-media",
+      "mcp__*__graphql_mutation",
+      "mcp__*__import-mock-shop-catalog",
+      "mcp__*__publish-digital-product",
+      "mcp__*__set-inventory",
+      "mcp__*__update-collection",
+      "mcp__*__update-product",
+      "mcp__*__upload-digital-product-file",
+      "mcp__*__upload-digital-product-media",
+      "mcp__*__trash_file",
+      "mcp__*__share_file",
+      "mcp__*__delete_file",
+      "mcp__*__delete_repository"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR\"/.claude/scripts/wow-guard.py"
+          }
+        ]
+      }
+    ]
+  }
+}

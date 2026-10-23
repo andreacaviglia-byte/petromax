@@ -1,0 +1,21 @@
+# Der Steckbrief des Vorhabens. project-setup füllt ihn; das Schema steht in .claude/docs/datalayer-contract.md.
+customer: ""
+key: ""
+title: ""
+language: ""
+project_folder: ""
+project_owner: ""
+shops: []
+team: []
+project_type: ""
+add_ons: []
+requirements_sheet: ""
+e2e_sheet: ""
+figma: ""
+confluence:
+  cloud_id: ""
+  space: ""
+  parent_page: ""
+board:
+  tool: ""
+  project: ""

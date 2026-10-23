@@ -1,0 +1,10 @@
+# Nur Erzeugtes. Der Name sagt, was drinliegt — Erzeuger gehören ins Repo, Erzeugnisse nicht.
+_build/
+
+.DS_Store
+
+# Laufergebnisse von claude plugin eval (aggregate-result.json, report.html)
+dev/evals/results/
+
+# Bytecode, entsteht beim Testlauf.
+__pycache__/
